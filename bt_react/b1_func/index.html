@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+ 
+  <!-- Làm việc với Jsx
+    Phần 1:
+    - Xử lý  DOM Events
+    - Component do chúng ta định nghĩa phải viết hoa chữ cái đầu
+    - Chọn component trong 1 object
+    - Booleans, Null & Undefined không được render
+    - Kết hợp toán tử logic để rander theo điều kiện
+    
+    Phần 2
+      Props trong JSX
+      - <Your Component
+          propName1 = "String literals"
+          prop2 = {expression}
+        </>
+        - Props default to "true"
+        - Spread/Rest props
+        - Children prop
+            - <YourComponent> String literals </yourComponent>
+            - <YourComponent> {expression} </yourComponent> 
+        - Render props         
+  -->
+  <div id="root"></div>
+  <script type="text/babel">
+    var courses = [
+      {
+        "id": 7,
+        "title": "Ki\u1EBFn Th\u1EE9c Nh\u1EADp M\u00F4n IT",
+        "slug": "lessons-for-newbie",
+        "description": "\u0110\u1EC3 c\u00F3 c\u00E1i nh\u00ECn t\u1ED5ng quan v\u1EC1 ng\u00E0nh IT - L\u1EADp tr\u00ECnh web c\u00E1c b\u1EA1n n\u00EAn xem c\u00E1c videos t\u1EA1i kh\u00F3a n\u00E0y tr\u01B0\u1EDBc nh\u00E9.",
+        "image": "courses/7.png",
+        "icon": "courses/7/6200b81f52d83.png",
+        "video_type": "youtube",
+        "video": "M62l1xA5Eu8",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 116728,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/7.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/7/6200b81f52d83.png",
+        "video_url": "https://www.youtube.com/watch?v=M62l1xA5Eu8",
+        "landing_page_url": "/courses/lessons-for-newbie",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 21,
+        "title": "L\u1EADp tr\u00ECnh C++ c\u01A1 b\u1EA3n, n\u00E2ng cao",
+        "slug": "lap-trinh-c-co-ban-toi-nang-cao",
+        "description": "Kh\u00F3a h\u1ECDc l\u1EADp tr\u00ECnh C++ t\u1EEB c\u01A1 b\u1EA3n t\u1EDBi n\u00E2ng cao d\u00E0nh cho ng\u01B0\u1EDDi m\u1EDBi b\u1EAFt \u0111\u1EA7u. M\u1EE5c ti\u00EAu c\u1EE7a kh\u00F3a h\u1ECDc n\u00E0y nh\u1EB1m gi\u00FAp c\u00E1c b\u1EA1n n\u1EAFm \u0111\u01B0\u1EE3c c\u00E1c kh\u00E1i ni\u1EC7m c\u0103n c\u01A1 c\u1EE7a l\u1EADp tr\u00ECnh, gi\u00FAp c\u00E1c b\u1EA1n c\u00F3 n\u1EC1n t\u1EA3ng v\u1EEFng ch\u1EAFc \u0111\u1EC3 chinh ph\u1EE5c con \u0111\u01B0\u1EDDng tr\u1EDF th\u00E0nh m\u1ED9t l\u1EADp tr\u00ECnh vi\u00EAn.",
+        "image": "courses/21/63e1bcbaed1dd.png",
+        "icon": "courses/21/63e1bcbb2dec5.png",
+        "video_type": "youtube",
+        "video": "Da1tpV9TMU0",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 16526,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2023-02-07T02:51:00.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/21/63e1bcbaed1dd.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/21/63e1bcbb2dec5.png",
+        "video_url": "https://www.youtube.com/watch?v=Da1tpV9TMU0",
+        "landing_page_url": "/courses/lap-trinh-c-co-ban-toi-nang-cao",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 2,
+        "title": "HTML CSS t\u1EEB Zero \u0111\u1EBFn Hero",
+        "slug": "html-css",
+        "description": "Trong kh\u00F3a n\u00E0y ch\u00FAng ta s\u1EBD c\u00F9ng nhau x\u00E2y d\u1EF1ng giao di\u1EC7n 2 trang web l\u00E0 The Band & Shopee.",
+        "image": "courses/2.png",
+        "icon": "courses/2/6200aecea81de.png",
+        "video_type": "youtube",
+        "video": "R6plN3FvzFY",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 174660,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/2.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/2/6200aecea81de.png",
+        "video_url": "https://www.youtube.com/watch?v=R6plN3FvzFY",
+        "landing_page_url": "/courses/html-css",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 3,
+        "title": "Responsive V\u1EDBi Grid System",
+        "slug": "responsive-web-design",
+        "description": "Trong kh\u00F3a n\u00E0y ch\u00FAng ta s\u1EBD h\u1ECDc v\u1EC1 c\u00E1ch x\u00E2y d\u1EF1ng giao di\u1EC7n web responsive v\u1EDBi Grid System, t\u01B0\u01A1ng t\u1EF1 Bootstrap 4.",
+        "image": "courses/3.png",
+        "icon": "courses/3/6200afe1240bb.png",
+        "video_type": "youtube",
+        "video": "uz5LIP85J5Y",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 39731,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/3.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/3/6200afe1240bb.png",
+        "video_url": "https://www.youtube.com/watch?v=uz5LIP85J5Y",
+        "landing_page_url": "/courses/responsive-web-design",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 1,
+        "title": "L\u1EADp Tr\u00ECnh JavaScript C\u01A1 B\u1EA3n",
+        "slug": "javascript-co-ban",
+        "description": "H\u1ECDc Javascript c\u01A1 b\u1EA3n ph\u00F9 h\u1EE3p cho ng\u01B0\u1EDDi ch\u01B0a t\u1EEBng h\u1ECDc l\u1EADp tr\u00ECnh. V\u1EDBi h\u01A1n 100 b\u00E0i h\u1ECDc v\u00E0 c\u00F3 b\u00E0i t\u1EADp th\u1EF1c h\u00E0nh sau m\u1ED7i b\u00E0i h\u1ECDc.",
+        "image": "courses/1.png",
+        "icon": "courses/1/6200ad9d8a2d8.png",
+        "video_type": "youtube",
+        "video": "0SJE9dYdpps",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 117885,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/1.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/1/6200ad9d8a2d8.png",
+        "video_url": "https://www.youtube.com/watch?v=0SJE9dYdpps",
+        "landing_page_url": "/courses/javascript-co-ban",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 12,
+        "title": "L\u1EADp Tr\u00ECnh JavaScript N\u00E2ng Cao",
+        "slug": "javascript-nang-cao",
+        "description": "Hi\u1EC3u s\u00E2u h\u01A1n v\u1EC1 c\u00E1ch Javascript ho\u1EA1t \u0111\u1ED9ng, t\u00ECm hi\u1EC3u v\u1EC1 IIFE, closure, reference types, this keyword, bind, call, apply, prototype, ...",
+        "image": "courses/12.png",
+        "icon": "courses/12/6200af2620118.png",
+        "video_type": "youtube",
+        "video": "MGhw6XliFgo",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 31959,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/12.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/12/6200af2620118.png",
+        "video_url": "https://www.youtube.com/watch?v=MGhw6XliFgo",
+        "landing_page_url": "/courses/javascript-nang-cao",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 14,
+        "title": "L\u00E0m vi\u1EC7c v\u1EDBi Terminal & Ubuntu",
+        "slug": "windows-terminal-wsl",
+        "description": "S\u1EDF h\u1EEFu m\u1ED9t Terminal hi\u1EC7n \u0111\u1EA1i, m\u1EA1nh m\u1EBD trong t\u00F9y bi\u1EBFn v\u00E0 h\u1ECDc c\u00E1ch l\u00E0m vi\u1EC7c v\u1EDBi Ubuntu l\u00E0 m\u1ED9t b\u01B0\u1EDBc quan tr\u1ECDng tr\u00EAn con \u0111\u01B0\u1EDDng tr\u1EDF th\u00E0nh m\u1ED9t Web Developer.",
+        "image": "courses/14/624faac11d109.png",
+        "icon": "courses/14/624faac2ee23d.png",
+        "video_type": "youtube",
+        "video": "7ppRSaGT1uw",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 14495,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/14/624faac11d109.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/14/624faac2ee23d.png",
+        "video_url": "https://www.youtube.com/watch?v=7ppRSaGT1uw",
+        "landing_page_url": "/courses/windows-terminal-wsl",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 13,
+        "title": "X\u00E2y D\u1EF1ng Website v\u1EDBi ReactJS",
+        "slug": "reactjs",
+        "description": "Kh\u00F3a h\u1ECDc ReactJS t\u1EEB c\u01A1 b\u1EA3n t\u1EDBi n\u00E2ng cao, k\u1EBFt qu\u1EA3 c\u1EE7a kh\u00F3a h\u1ECDc n\u00E0y l\u00E0 b\u1EA1n c\u00F3 th\u1EC3 l\u00E0m h\u1EA7u h\u1EBFt c\u00E1c d\u1EF1 \u00E1n th\u01B0\u1EDDng g\u1EB7p v\u1EDBi ReactJS. Cu\u1ED1i kh\u00F3a h\u1ECDc n\u00E0y b\u1EA1n s\u1EBD s\u1EDF h\u1EEFu m\u1ED9t d\u1EF1 \u00E1n gi\u1ED1ng Tiktok.com, b\u1EA1n c\u00F3 th\u1EC3 t\u1EF1 tin \u0111i xin vi\u1EC7c khi n\u1EAFm ch\u1EAFc c\u00E1c ki\u1EBFn th\u1EE9c \u0111\u01B0\u1EE3c chia s\u1EBB trong kh\u00F3a h\u1ECDc n\u00E0y.",
+        "image": "courses/13/13.png",
+        "icon": "courses/13/6200af9262b30.png",
+        "video_type": "youtube",
+        "video": "x0fSBAgBrOQ",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 53741,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/13/13.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/13/6200af9262b30.png",
+        "video_url": "https://www.youtube.com/watch?v=x0fSBAgBrOQ",
+        "landing_page_url": "/courses/reactjs",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 6,
+        "title": "Node & ExpressJS",
+        "slug": "nodejs",
+        "description": "H\u1ECDc Back-end v\u1EDBi Node & ExpressJS framework, hi\u1EC3u c\u00E1c kh\u00E1i ni\u1EC7m khi l\u00E0m Back-end v\u00E0 x\u00E2y d\u1EF1ng RESTful API cho trang web.",
+        "image": "courses/6.png",
+        "icon": "courses/6/6200afb926038.png",
+        "video_type": "youtube",
+        "video": "z2f7RHgvddc",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 35996,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/6.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/6/6200afb926038.png",
+        "video_url": "https://www.youtube.com/watch?v=z2f7RHgvddc",
+        "landing_page_url": "/courses/nodejs",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 4,
+        "title": "App \"\u0110\u1EEBng Ch\u1EA1m Tay L\u00EAn M\u1EB7t\"",
+        "slug": "tool-canh-bao-so-len-mat",
+        "description": "X\u00E2y d\u1EF1ng \u1EE9ng d\u1EE5ng \u0111\u01B0a ra c\u1EA3nh b\u00E1o khi ng\u01B0\u1EDDi d\u00F9ng s\u1EDD tay l\u00EAn m\u1EB7t. Ch\u00FAng ta s\u1EBD s\u1EED d\u1EE5ng th\u01B0 vi\u1EC7n ReactJS & Tensoflow \u0111\u1EC3 ho\u00E0n thi\u1EC7n \u1EE9ng d\u1EE5ng n\u00E0y.",
+        "image": "courses/4/61a9e9e701506.png",
+        "icon": null,
+        "video_type": "youtube",
+        "video": "r6GWbQL-qwA",
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 8489,
+        "is_pro": false,
+        "is_coming_soon": false,
+        "is_selling": false,
+        "published_at": "2020-02-10T14:23:13.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/4/61a9e9e701506.png",
+        "icon_url": "",
+        "video_url": "https://www.youtube.com/watch?v=r6GWbQL-qwA",
+        "landing_page_url": "/courses/tool-canh-bao-so-len-mat",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 15,
+        "title": "HTML CSS Pro",
+        "slug": "htmlcss",
+        "description": "T\u1EEB c\u01A1 b\u1EA3n t\u1EDBi chuy\u00EAn s\u00E2u, th\u1EF1c h\u00E0nh 8 d\u1EF1 \u00E1n, h\u00E0ng tr\u0103m b\u00E0i t\u1EADp, trang h\u1ECFi \u0111\u00E1p ri\u00EAng, c\u1EA5p ch\u1EE9ng ch\u1EC9 sau kh\u00F3a h\u1ECDc v\u00E0 mua m\u1ED9t l\u1EA7n h\u1ECDc m\u00E3i m\u00E3i.",
+        "image": "courses/15/62f13d2424a47.png",
+        "icon": "courses/15/62385d6c63dfa.png",
+        "video_type": "upload",
+        "video": null,
+        "old_price": 2500000,
+        "price": 1299000,
+        "pre_order_price": 699000,
+        "students_count": 3837,
+        "is_pro": true,
+        "is_coming_soon": false,
+        "is_selling": true,
+        "published_at": "2022-08-18T17:00:00.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
+        "video_url": "",
+        "landing_page_url": "/landing/htmlcss",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 27,
+        "title": "Ng\u00F4n ng\u1EEF ti\u1EC1n x\u1EED l\u00FD Sass",
+        "slug": "sass",
+        "description": "\u0110\u00E2y l\u00E0 m\u1ED9t kh\u00F3a h\u1ECDc nh\u1ECF \u0111\u01B0\u1EE3c t\u00E1ch ra t\u1EEB 2 ch\u01B0\u01A1ng h\u1ECDc trong kh\u00F3a HTML CSS Pro. Ki\u1EBFn th\u1EE9c v\u1EC1 Sass trong kh\u00F3a n\u00E0y b\u1EA1n c\u00F3 th\u1EC3 \u00E1p d\u1EE5ng ngay v\u00E0o c\u00E1c d\u1EF1 \u00E1n c\u1EE7a b\u1EA1n.",
+        "image": "courses/27/64e184ee5d7a2.png",
+        "icon": "courses/27/64e0daf212fad.png",
+        "video_type": "upload",
+        "video": "courses/27/oeT5zTmdk8KlHwU2meMJpnR7uihkX6OvYxnkjiB9.mp4",
+        "old_price": 400000,
+        "price": 299000,
+        "pre_order_price": 0,
+        "students_count": 0,
+        "is_pro": true,
+        "is_coming_soon": false,
+        "is_selling": true,
+        "published_at": "2023-08-19T15:06:00.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
+        "video_url": "https://videos.fullstack.edu.vn/f8-prod/courses/27/oeT5zTmdk8KlHwU2meMJpnR7uihkX6OvYxnkjiB9.mp4",
+        "landing_page_url": "/landing/sass",
+        "is_pre_order": false,
+        "is_published": true
+      },
+      {
+        "id": 19,
+        "title": "JavaScript Pro",
+        "slug": "javascript-pro",
+        "description": "Kh\u00F3a h\u1ECDc JavaScript Pro",
+        "image": "courses/19/62f13cb607b4b.png",
+        "icon": "courses/19/62f13cb685c81.png",
+        "video_type": "upload",
+        "video": null,
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 0,
+        "is_pro": true,
+        "is_coming_soon": true,
+        "is_selling": false,
+        "published_at": "2023-11-30T17:00:00.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb607b4b.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
+        "video_url": "",
+        "landing_page_url": "/landing/javascript-pro",
+        "is_pre_order": false,
+        "is_published": false
+      },
+      {
+        "id": 20,
+        "title": "NextJS Pro",
+        "slug": "reactjs-pro",
+        "description": "Kh\u00F3a h\u1ECDc NextJS Pro",
+        "image": "courses/20/648020fc16597.png",
+        "icon": "courses/20/648020fcc8000.png",
+        "video_type": "upload",
+        "video": null,
+        "old_price": 0,
+        "price": 0,
+        "pre_order_price": 0,
+        "students_count": 0,
+        "is_pro": true,
+        "is_coming_soon": true,
+        "is_selling": false,
+        "published_at": "2024-03-31T17:00:00.000000Z",
+        "is_registered": false,
+        "user_progress": 0,
+        "last_completed_at": null,
+        "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
+        "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fcc8000.png",
+        "video_url": "",
+        "landing_page_url": "/landing/reactjs-pro",
+        "is_pre_order": false,
+        "is_published": false
+      }
+    ];
+   
+    // ui component
+    function Course({course,onClick}) {
+     return (<div className="wraperCourse">
+        <h2 onClick={()=>{onClick(course)}}>{course.title}</h2>
+        <img src={course.image_url} alt={course.title} />
+        <p >{course.description}</p>
+      </div>)
+    }
+    
+    // container component
+    function App() {
+        const handleClick = (course)=>{
+          console.log(course.title);
+        }
+      return (<div>
+        {courses.map((course) => <Course
+          key = {course.id}
+          course = {course}
+          onClick = {handleClick}
+        />)}
+        
+      </div>)
+    }
+    ReactDOM.render(<App/>,document.getElementById('root'));
+    
+    
+  </script>
+</body>
+
+</html>

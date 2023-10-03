@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>func</title>
+</head>
+
+<body>
+    <!-- 
+        - React elements 
+            - Sử dụng props giống như cái atribute của thẻ html
+            - 2 prop class, for => className,htmlFor
+            - Phải tuân theo quy ước có sẵn
+        - React components
+            - Sử dụng giống như đối số cho Component
+            - Tự do đặt tên props
+            - Có thể bao gồm dấu gạch ngang
+        - Chú ý 
+            - Prop "key" là prop đặc biệt 
+            - Prop cơ bản là đối số của Component
+                => Props có thể là bất cứ kiểu dữ liệu gì 
+            - Sử dụng destructuring        
+     -->
+    <div id="root"></div>
+    <script type="text/babel">
+        import { createRoot } from 'react-dom/client';
+        //     function AppCom(){
+        //         return <div>
+        //             <img src="./images/i8.jpg" with="300px" height="300px" alt=""/>
+        //             <h2 class="post-title">.Net tuong tac voi nguoi dung</h2>
+        //             <p class="post-desc">Ban co kien truc ngon ngu c#</p>
+        //             <p class="post-published">5 ngay truoc</p>
+        //             </div>
+        //     }
+        //    var app = (<div class="post-list">
+        //     <AppCom/>
+        //     <AppCom/>
+        //     <AppCom/>
+        //    </div>)
+        //    ReactDOM.render(app,document.getElementById("root"));
+        function PostItem(prop) {
+            console.log(prop.image)
+            return (<div class="post-Item">
+                <img
+                    src={prop.image}
+                    alt={prop.title}
+                    with="300px" height="300px"
+                />
+                <h2 class="post-title">{prop.title}</h2>
+                <p class="post-des">{prop.desc}</p>
+                <p class="post-updated">{prop.updated}</p>
+            </div>)
+        }
+        function App() {
+            return (
+                <div class="wraper">
+                    <PostItem
+                        image="./images/i8.jpg"
+                        title=".Net tuong tac voi nguoi dung"
+                        desc="Ban co kien truc ngon ngu c#"
+                        updated="5 ngay truoc"
+                    />
+                    <PostItem
+                        image="./images/i8.jpg"
+                        title="1. .Net tuong tac voi nguoi dung"
+                        desc="1. Ban co kien truc ngon ngu c#"
+                        updated="1. 5 ngay truoc"
+                    />
+                    <PostItem
+                        image="./images/i8.jpg"
+                        title="2. .Net tuong tac voi nguoi dung"
+                        desc="2. Ban co kien truc ngon ngu c#"
+                        updated="2. 5 ngay truoc"
+                    />
+                </div>
+
+
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+    <!-- 
+        1.githup,NPMJS,UNPkG
+
+     -->
+     <script>
+        // DOM
+        const h1Dom = document.createElement('h1')
+        h1Dom.title = 'heading'
+        h1Dom.className = 'head'
+        h1Dom.innerText = 'Hello guys !'
+        //document.body.appendChild(h1Dom)
+
+        // React
+        const reactH1 = React.createElement("h1",{
+            title : 'hello', 
+            className : 'heading'
+        },"Hello guys")
+
+        const ulReact = React.createElement("ul",null,
+            React.createElement("li",null,"Javascript"),
+            React.createElement("li",null,"React js")
+        )
+
+
+
+        console.dir(h1Dom);
+        console.log(reactH1);
+
+    const bt = React.createElement("div", {
+        className: 'pros-item'
+    },
+        React.createElement("h2", { title: "Hoc react" }, "Reactjs"),
+        React.createElement("p", null, "Reactjs nang cao")
+    )
+    console.log(bt);
+
+    const root = document.getElementById("root");
+    ReactDOM.render(reactH1,root);
+    ReactDOM.render(ulReact,root);
+    </script>
+</body>
+</html>

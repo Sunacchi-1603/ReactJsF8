@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1. Tai sao phair su dung react-Dom ?
+        2. Tai sao lai tach React-DOM ra ?
+        3. Render UI
+
+        React- Native -> ios, android
+     -->
+     <div id="root"></div>
+     <script type="text/babel">
+        //react
+    //     const bt = React.createElement("div", {
+    //     className: 'pros-item'
+    // },
+    //     React.createElement("h2", { title: "Hoc react" }, "Reactjs"),
+    //     React.createElement("p", null, "Reactjs nang cao")
+    // )
+   // console.log(bt);
+    // get root element
+    //const con = document.getElementById("root")
+
+    // react-Dom -> render UI
+    //react 17
+    //ReactDOM.render(bt,root)
+    // babel
+    //react 18
+    // const root = ReactDOM.createRoot(con);
+    // root.render(bt);
+
+    const reactCourse = 'ReactJs F8'
+    const courses = [
+        {
+            name: "Html,css"
+        },
+        {
+            name: "Responsive"
+        },
+        {
+            name: "ReactJs"
+        }
+    ]
+
+    var ul = <ul>
+            {courses.map((course,index)=> <li key={index}>{course.name}</li>)}
+
+        </ul>
+    ReactDOM.render(ul,document.getElementById("root"));    
+     </script>
+</body>
+</html>
